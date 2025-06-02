@@ -2,7 +2,6 @@
     "name": "personal-website",
     "version": "0.1.0",
     "private": true,
-    "homepage": "https://almosttaklu.github.io",
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^6.5.2",
         "@fortawesome/free-brands-svg-icons": "^6.5.2",
@@ -12,7 +11,7 @@
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^13.5.0",
-        "pdfjs-dist": "^2.6.347",
+        "pdfjs-dist": "^3.11.174",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-icons": "^5.2.1",
@@ -50,7 +49,7 @@
     },
     "devDependencies": {
         "autoprefixer": "^10.4.19",
-        "gh-pages": "^6.1.1",
+        "gh-pages": "^6.3.0",
         "postcss": "^8.4.39",
         "tailwindcss": "^3.4.4"
     }
