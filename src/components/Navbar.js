@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import {
   FaTimes,
@@ -113,23 +114,23 @@ export default function Navbar({ currentTheme, toggleTheme }) {
       >
         <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
           <div className="flex-grow md:flex-grow-0 text-center md:text-left">
-            <a
-              href="/"
+            <Link
+              to="/"
               className="text-2xl font-bold tracking-tight text-primary-accent dark:text-primary-accent-dark"
             >
               Ganga Acharya
-            </a>
+            </Link>
           </div>
 
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map(({ id, label }) => (
-              <a
+              <Link
                 key={id}
-                href={`#${id}`}
+                to={`/${id}`}
                 className="scroll-smooth transition-colors hover:text-primary-accent dark:hover:text-primary-accent-dark text-gray-600 dark:text-gray-300"
               >
                 {label}
-              </a>
+              </Link>
             ))}
             <a
               href={resumeURL}
@@ -199,9 +200,9 @@ export default function Navbar({ currentTheme, toggleTheme }) {
 
           <nav className="flex flex-col gap-4">
             {navItems.map(({ id, label, icon: Icon }, idx) => (
-              <a
+              <Link
                 key={id}
-                href={`#${id}`}
+                to={`/${id}`}
                 onClick={() => setOpen(false)}
                 className={clsx(
                   'scroll-smooth flex items-center gap-4 rounded-md px-6 py-4 text-xl font-semibold text-gray-800 dark:text-white transform transition-transform duration-500 hover:scale-110 hover:-translate-y-1'
@@ -209,7 +210,7 @@ export default function Navbar({ currentTheme, toggleTheme }) {
               >
                 <Icon className="w-6 h-6 text-primary-accent dark:text-primary-accent-dark" />
                 {label}
-              </a>
+              </Link>
             ))}
           </nav>
 
