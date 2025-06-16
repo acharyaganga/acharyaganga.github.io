@@ -10,14 +10,14 @@ export const projectsData = [
         title: "This Portfolio Website",
         description: "A responsive and interactive single-page application built to showcase my skills and projects. Developed with React and Tailwind CSS.",
         tags: ["React", "Tailwind CSS", "JavaScript", "Portfolio"],
-        link: "https://github.com/acharyaganga/acharyaganga.github.io.git"
+        link: "https://github.com/acharyaganga/acharyaganga.github.io"
     },
     {
         id: "blogsite",
         title: "Simple Blog Site",
         description: "A simple and intuitive blogging platform built with the MEAN Stack (MongoDB, Express, Angular, Node.js) using MVC architecture. Users can create, manage, and engage with blog posts through comments and reactions.",
         tags: ["JavaScript", "Angular", "Node.js", "Express", "MongoDB", "Full-Stack"],
-        link: "https://github.com/acharyaganga/MEAN-Project.git" 
+        link: "https://github.com/acharyaganga/MEAN-Project"
     },
     {
         id: "searchengine",
