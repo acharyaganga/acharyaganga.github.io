@@ -125,6 +125,13 @@ h1, h2, h3 {
 .dark .section-band {
   background-color: rgba(31, 41, 55, 0.35);
 }
+/* On a band, surfaces take the page tone so they still read as separate. */
+.section-band .surface {
+  background-color: #f8fafc;
+}
+.dark .section-band .surface {
+  background-color: rgba(17, 24, 39, 0.6);
+}
 
 .typewriter-caret {
   display: inline-block;
