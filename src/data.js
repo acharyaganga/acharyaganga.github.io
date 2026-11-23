@@ -19,9 +19,13 @@ export const experience = [
   {
     period: 'Jul 2024 \u2013 Present',
     title: 'Data Analyst',
-    org: 'Pennsylvania Department of Human Services',
-    detail:
-      'Reports and dashboards built with SQL, R, Python, Tableau, Qlik and Crystal Reports.',
+    org: 'Pennsylvania Department of Human Services, OMHSAS \u00b7 contractor via Computer Aid, Inc. (CAI)',
+    points: [
+      'Analyze and evaluate State Hospital system data that executive leadership uses for program planning, monitoring and resource allocation.',
+      'Deliver scheduled and ad hoc reports, dashboards and datasets, including federal block grant and Governor\u2019s Budget reporting.',
+      'Develop and track program performance measures, and recommend changes from the trends.',
+      'Support EHR implementation and incident-management reporting, with documented specifications and data integrity checks.',
+    ],
   },
   {
     period: '2022 – 2024',
@@ -59,7 +63,7 @@ export const projectsData = [
     id: 'searchengine',
     title: 'Search Engine',
     description:
-      'A Java search engine using PostgreSQL, integrating Potter Stemmer and stopword filtering. Implements advanced search algorithms, PageRank, and indexing techniques for document retrieval. Features inverted indices for quick, precise searches across vast datasets and link graph analysis for result prioritization.',
+      'A Java search engine using PostgreSQL, integrating Porter stemmer and stopword filtering. Implements advanced search algorithms, PageRank, and indexing techniques for document retrieval. Features inverted indices for quick, precise searches across vast datasets and link graph analysis for result prioritization.',
     tags: ['Java', 'PostgreSQL', 'Gradle', 'Tomcat', 'Search Algorithms', 'PageRank'],
     label: 'private repo',
   },

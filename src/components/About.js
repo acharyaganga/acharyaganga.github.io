@@ -10,9 +10,11 @@ export default function About() {
           <h2 className="section-title">About</h2>
           <div className="mt-6 space-y-4 leading-relaxed text-gray-600 dark:text-gray-300">
             <p>
-              I’m a <strong className="font-semibold text-gray-900 dark:text-white">Data Analyst</strong> at
-              the Pennsylvania Department of Human Services. I use SQL, R, Python, Tableau, Qlik and
-              Crystal Reports to turn complex data into useful insights.
+              I’m a <strong className="font-semibold text-gray-900 dark:text-white">Data Analyst</strong> working
+              with the Pennsylvania Department of Human Services as a contractor through Computer Aid,
+              Inc. I analyze State Hospital system data for the Office of Mental Health and Substance
+              Abuse Services, using SQL, R, Python, Tableau, Qlik and Crystal Reports to turn complex
+              data into reports that leadership can act on.
             </p>
             <p>
               I enjoy solving real-world problems through data: building reports and dashboards
@@ -44,6 +46,13 @@ export default function About() {
                 <p className="text-sm text-gray-600 dark:text-gray-300">{entry.org}</p>
                 {entry.detail && (
                   <p className="mt-2 text-sm leading-relaxed text-gray-600 dark:text-gray-400">{entry.detail}</p>
+                )}
+                {entry.points && (
+                  <ul className="mt-3 list-disc space-y-1.5 pl-4 text-sm leading-relaxed text-gray-600 marker:text-primary-accent dark:text-gray-400 dark:marker:text-primary-accent-dark">
+                    {entry.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
                 )}
               </Reveal>
             ))}
