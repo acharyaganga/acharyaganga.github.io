@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import { MotionConfig } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -40,18 +41,20 @@ export default function App() {
     });
 
   return (
+    <MotionConfig reducedMotion="user">
     <Router>
       <Navbar currentTheme={theme} toggleTheme={cycleTheme} />
       <ScrollToSection />
       <main id="main">
         <Hero />
         <About />
-        <Skills />
         <Projects />
+        <Skills />
         <Contact />
       </main>
       <Footer />
       <ScrollToTop />
     </Router>
+    </MotionConfig>
   );
 }

@@ -33,8 +33,8 @@ function useClickOutside(ref, onOutsideClick, excludeRef) {
 
 const navItems = [
   { id: 'about', label: 'About', icon: FaUserCircle },
-  { id: 'skills', label: 'Skills', icon: FaCog },
   { id: 'projects', label: 'Projects', icon: FaLayerGroup },
+  { id: 'skills', label: 'Skills', icon: FaCog },
   { id: 'contact', label: 'Contact', icon: FaEnvelope },
 ];
 const resumeURL = resumePDF;
@@ -129,11 +129,11 @@ export default function Navbar({ currentTheme, toggleTheme }) {
           visible ? 'translate-y-0' : '-translate-y-full'
         )}
       >
-        <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
+        <div className="shell flex items-center justify-between py-3">
           <div className="flex-grow md:flex-grow-0 text-center md:text-left">
             <Link
               to="/"
-              className="text-2xl font-bold tracking-tight text-primary-accent dark:text-primary-accent-dark"
+              className="text-xl font-bold tracking-tight text-primary-accent dark:text-primary-accent-dark"
             >
               Ganga Acharya
             </Link>
@@ -160,9 +160,9 @@ export default function Navbar({ currentTheme, toggleTheme }) {
               href={resumeURL}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg bg-primary-accent px-5 py-2 text-sm font-medium text-white shadow-md transition hover:bg-primary-accent-hover dark:hover:bg-primary-accent-dark-hover"
+              className="btn btn-primary !px-4 !py-2 text-sm"
             >
-              Resume
+              Résumé
             </a>
             <button
               onClick={toggleTheme}
@@ -249,7 +249,7 @@ export default function Navbar({ currentTheme, toggleTheme }) {
               className="flex items-center justify-center gap-2 rounded-md bg-primary-accent py-3 px-4 text-white font-medium hover:bg-primary-accent-hover dark:hover:bg-primary-accent-dark-hover transition-colors"
             >
               <FaFileAlt className="w-5 h-5" />
-              Resume
+              Résumé
             </a>
           </div>
         </div>

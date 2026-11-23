@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 import { SiGithub, SiLinkedin, SiMinutemailer, SiBluesky } from 'react-icons/si';
 import { FiMail } from 'react-icons/fi';
-import ScrollReveal from '../hooks/ScrollReveal';
+import Reveal from './Reveal';
+import { links } from '../data';
 
 // Public by design: Web3Forms keys only identify the destination inbox.
 const WEB3FORMS_ACCESS_KEY = "8e48d8bc-200b-45ac-8c14-2b600d0f7404";
 
 const inputClass =
-  "w-full px-4 py-3 rounded-md bg-white/90 dark:bg-gray-900/50 border border-gray-300 dark:border-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-accent";
+  "w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-gray-900 placeholder-gray-500 transition-colors focus:border-primary-accent focus:outline-none focus:ring-2 focus:ring-primary-accent/30 dark:border-gray-700 dark:bg-gray-900/60 dark:text-white dark:placeholder-gray-400 dark:focus:border-primary-accent-dark dark:focus:ring-primary-accent-dark/30";
+
+const contactLinks = [
+  { href: links.email, label: 'Email', icon: FiMail },
+  { href: links.linkedin, label: 'LinkedIn', icon: SiLinkedin, external: true },
+  { href: links.github, label: 'GitHub', icon: SiGithub, external: true },
+  { href: links.bluesky, label: 'Bluesky', icon: SiBluesky, external: true },
+];
 
 export default function Contact() {
   const [result, setResult] = useState("");
@@ -46,131 +54,93 @@ export default function Contact() {
   };
 
   return (
-    <ScrollReveal variant="slide-up">
-      <section id="contact" className="scroll-mt-24 pt-6 pb-16 lg:pt-10 lg:pb-20 bg-gradient-to-b from-slate-100 via-white to-slate-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden relative">
+    <section id="contact" className="section">
+      <div className="shell">
+        <Reveal>
+          <h2 className="section-title">Contact</h2>
+          <p className="mt-4 max-w-xl text-gray-600 dark:text-gray-300">
+            I’m open to new opportunities and collaborations. Send a message and I’ll get back to you.
+          </p>
+        </Reveal>
 
-        <div className="container mx-auto px-4 sm:px-6">
-          <header className="text-center mb-8">
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white relative inline-block after:block after:h-1 after:bg-primary-accent dark:after:bg-primary-accent-dark after:w-12 after:mt-2 after:mx-auto">
-              Let’s Build Something Amazing
-            </h2>
-            <p className="mt-4 max-w-xl mx-auto text-base text-gray-600 dark:text-gray-400">
-              I’m open to new opportunities, collaborations, or just a friendly chat. Feel free to reach out!
+        <Reveal className="surface mt-8 grid gap-10 p-6 sm:p-9 md:grid-cols-[3fr_2fr] md:gap-14">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Honeypot: Web3Forms drops submissions where this is checked. */}
+            <input
+              type="checkbox"
+              name="botcheck"
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
+            <div>
+              <label htmlFor="contact-name" className="sr-only">Your name</label>
+              <input
+                id="contact-name"
+                type="text"
+                name="name"
+                autoComplete="name"
+                placeholder="Your Name"
+                required
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label htmlFor="contact-email" className="sr-only">Your email</label>
+              <input
+                id="contact-email"
+                type="email"
+                name="email"
+                autoComplete="email"
+                placeholder="Your Email"
+                required
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label htmlFor="contact-message" className="sr-only">Your message</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="5"
+                placeholder="Your Message"
+                required
+                className={inputClass}
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              disabled={sending}
+              className={`btn w-full justify-center disabled:cursor-wait disabled:opacity-60 ${
+                sent ? "bg-green-700 text-white hover:bg-green-800" : "btn-primary"
+              }`}
+            >
+              <SiMinutemailer className="h-4 w-4" aria-hidden="true" />
+              {sent ? "Message Sent!" : sending ? "Sending..." : "Send Message"}
+            </button>
+            <p role="status" aria-live="polite" className="min-h-[1.25rem] text-center text-sm text-gray-600 dark:text-gray-400">
+              {result}
             </p>
-          </header>
+          </form>
 
-          <div className="group max-w-6xl mx-auto bg-white/70 dark:bg-gray-800/60 backdrop-blur-2xl border border-primary-accent/20 dark:border-gray-700/40 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] p-8 md:p-14 grid gap-12 md:grid-cols-[3fr_2fr] md:items-center">
-            <div className="space-y-6">
-              <h3 className="text-3xl font-semibold text-gray-900 dark:text-white text-center md:text-left">
-                Get in Touch
-              </h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Honeypot: Web3Forms drops submissions where this is checked. */}
-                <input
-                  type="checkbox"
-                  name="botcheck"
-                  className="hidden"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                />
-                <div>
-                  <label htmlFor="contact-name" className="sr-only">Your name</label>
-                  <input
-                    id="contact-name"
-                    type="text"
-                    name="name"
-                    autoComplete="name"
-                    placeholder="Your Name"
-                    required
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-email" className="sr-only">Your email</label>
-                  <input
-                    id="contact-email"
-                    type="email"
-                    name="email"
-                    autoComplete="email"
-                    placeholder="Your Email"
-                    required
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="contact-message" className="sr-only">Your message</label>
-                  <textarea
-                    id="contact-message"
-                    name="message"
-                    rows="4"
-                    placeholder="Your Message"
-                    required
-                    className={inputClass}
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  disabled={sending}
-                  className={`w-full inline-flex justify-center items-center gap-3 rounded-full px-6 py-3 text-base font-semibold text-white shadow-md transition-all duration-300 disabled:opacity-60 disabled:cursor-wait ${
-                    sent
-                      ? "bg-green-700 hover:bg-green-800"
-                      : "bg-primary-accent hover:scale-105 hover:shadow-xl dark:hover:bg-primary-accent-dark-hover"
-                  }`}
+          <ul className="flex flex-row flex-wrap justify-center gap-2 md:flex-col md:justify-start md:gap-1">
+            {contactLinks.map(({ href, label, icon: Icon, external }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  aria-label={label}
+                  {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className="flex items-center gap-3 rounded-xl px-3 py-3 font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-primary-accent dark:text-gray-300 dark:hover:bg-gray-700/50 dark:hover:text-primary-accent-dark"
                 >
-                  <SiMinutemailer className="w-5 h-5 transition-transform duration-200" />
-                  {sent ? "Message Sent!" : sending ? "Sending..." : "Send Message"}
-                </button>
-                <p role="status" aria-live="polite" className="text-sm text-center text-gray-600 dark:text-gray-400">{result}</p>
-              </form>
-            </div>
-
-            <div className="flex flex-row md:flex-col gap-6 md:gap-8 justify-center md:items-end md:pl-16 pt-6">
-              <a
-                href="https://github.com/acharyaganga"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-primary-accent dark:hover:text-primary-accent-dark transition-transform hover:scale-110 transform duration-300 ease-in-out"
-              >
-                <SiGithub className="w-8 h-8" />
-                <span className="hidden md:inline text-lg font-medium">GitHub</span>
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/acharyagan/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-primary-accent dark:hover:text-primary-accent-dark transition-transform hover:scale-110 transform duration-300 ease-in-out"
-              >
-                <SiLinkedin className="w-8 h-8" />
-                <span className="hidden md:inline text-lg font-medium">LinkedIn</span>
-              </a>
-
-              <a
-                href="mailto:ach.ganga@outlook.com"
-                aria-label="Email"
-                className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-primary-accent dark:hover:text-primary-accent-dark transition-transform hover:scale-110 transform duration-300 ease-in-out"
-              >
-                <FiMail className="w-8 h-8" />
-                <span className="hidden md:inline text-lg font-medium">Email</span>
-              </a>
-
-              <a
-                href="https://bsky.app/profile/gangaacharya.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Bluesky"
-                className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-primary-accent dark:hover:text-primary-accent-dark transition-transform hover:scale-110 transform duration-300 ease-in-out"
-              >
-                <SiBluesky className="w-8 h-8" />
-                <span className="hidden md:inline text-lg font-medium">Bluesky</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    </ScrollReveal>
+                  <Icon className="h-6 w-6 flex-shrink-0" aria-hidden="true" />
+                  <span className="hidden md:inline">{label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </div>
+    </section>
   );
 }
