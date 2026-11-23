@@ -3,9 +3,8 @@ import { useTypewriter, Cursor } from 'react-simple-typewriter';
 import { motion } from 'framer-motion';
 
 const roles = [
+  'Data Analyst',
   'Full‑Stack Developer',
-  'Software Engineer',
-  'Creative Coder',
   'Problem Solver',
 ];
 

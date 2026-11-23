@@ -10,7 +10,7 @@ export const projectsData = [
         title: "This Portfolio Website",
         description: "A responsive and interactive single-page application built to showcase my skills and projects. Developed with React and Tailwind CSS.",
         tags: ["React", "Tailwind CSS", "JavaScript", "Portfolio"],
-        link: "https://github.com/acharyaganga/acharyaganga.github.io"
+        link: "https://github.com/acharyaganga/personal-website"
     },
     {
         id: "blogsite",
