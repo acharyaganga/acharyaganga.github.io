@@ -20,7 +20,7 @@ export const experience = [
     period: 'Jul 2024 \u2013 Present',
     current: true,
     title: 'Data Analyst',
-    org: 'Pennsylvania Department of Human Services, OMHSAS \u00b7 contractor via Computer Aid, Inc. (CAI)',
+    org: 'Pennsylvania Department of Human Services \u00b7 Office of Mental Health and Substance Abuse Services',
     points: [
       'Analyze and evaluate State Hospital system data that executive leadership uses for program planning, monitoring and resource allocation.',
       'Deliver scheduled and ad hoc reports, dashboards and datasets, including federal block grant and Governor\u2019s Budget reporting.',
@@ -29,15 +29,23 @@ export const experience = [
     ],
   },
   {
-    period: '2022 – 2024',
+    period: '2015 \u2013 2021',
+    title: 'Production Supervisor',
+    org: 'BioFire Diagnostics',
+    detail: 'Led a production team; quality investigations and process improvement.',
+  },
+];
+
+export const education = [
+  {
+    period: '2022 \u2013 2024',
     title: 'B.S. Computer Science',
     org: 'Millersville University',
   },
   {
-    period: '2015 – 2021',
-    title: 'Production Supervisor',
-    org: 'BioFire Diagnostics',
-    detail: 'Led a production team; quality investigations and process improvement.',
+    period: '2020',
+    title: 'Associate\u2019s, General Education',
+    org: 'Salt Lake Community College',
   },
 ];
 
