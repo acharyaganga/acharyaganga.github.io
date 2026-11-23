@@ -20,7 +20,7 @@ export default function Hero() {
     <section
       id="hero"
       className="relative scroll-mt-24 min-h-screen pt-20 sm:pt-24 flex items-center justify-center section-bg overflow-hidden"
-      aria-label="Hero section"
+      aria-label="Introduction"
     >
       <div className="container relative z-10 px-6 md:px-12 lg:px-16">
         <motion.h1
@@ -39,13 +39,14 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
+          aria-hidden="true"
           className="mt-4 text-xl sm:text-2xl md:text-3xl font-semibold text-primary-accent dark:text-primary-accent-dark text-center md:text-left"
         >
           <span className="typewriter-text">{text}</span>
           <Cursor cursorStyle="|" />
         </motion.div>
 
-        <p className="sr-only">Current role: {text}</p>
+        <p className="sr-only">{roles.join(', ')}</p>
 
         <motion.p
           initial={{ opacity: 0 }}

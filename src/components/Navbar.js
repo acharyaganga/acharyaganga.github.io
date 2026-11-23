@@ -15,7 +15,6 @@ import { RiMenu5Fill } from 'react-icons/ri';
 
 import resumePDF from '../assets/Ganga_Resume.pdf';
 
-const listeners = new Set();
 function useClickOutside(ref, onOutsideClick, excludeRef) {
   const handler = useCallback(
     (e) => {
@@ -27,18 +26,8 @@ function useClickOutside(ref, onOutsideClick, excludeRef) {
     [ref, onOutsideClick, excludeRef]
   );
   useEffect(() => {
-    listeners.add(handler);
-    if (listeners.size === 1)
-      document.addEventListener('mousedown', (evt) =>
-        listeners.forEach((l) => l(evt))
-      );
-    return () => {
-      listeners.delete(handler);
-      if (listeners.size === 0)
-        document.removeEventListener('mousedown', (evt) =>
-          listeners.forEach((l) => l(evt))
-        );
-    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
   }, [handler]);
 }
 
@@ -69,6 +58,14 @@ export default function Navbar({ currentTheme, toggleTheme }) {
   const panelRef = useRef(null);
   const btnRef = useRef(null);
 
+  // 'auto' has no icon of its own: show the theme that is actually applied.
+  const effectiveTheme =
+    currentTheme === 'auto'
+      ? window.matchMedia('(prefers-color-scheme: dark)').matches
+        ? 'dark'
+        : 'light'
+      : currentTheme;
+
   useEffect(() => {
     const onScroll = () => {
       const curr = window.scrollY;
@@ -96,7 +93,7 @@ export default function Navbar({ currentTheme, toggleTheme }) {
   return (
     <>
       <a
-        href="#hero"
+        href="#main"
         className="sr-only focus:not-sr-only fixed top-2 left-2 z-[1000] bg-primary-accent text-white px-4 py-2 rounded"
       >
         Skip to main content
@@ -110,7 +107,6 @@ export default function Navbar({ currentTheme, toggleTheme }) {
           visible ? 'translate-y-0' : '-translate-y-full',
           scrolled && 'backdrop-blur-md'
         )}
-        aria-hidden={!visible}
       >
         <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
           <div className="flex-grow md:flex-grow-0 text-center md:text-left">
@@ -145,10 +141,10 @@ export default function Navbar({ currentTheme, toggleTheme }) {
               aria-label="Toggle theme"
               className="relative w-10 h-10 flex items-center justify-center rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             >
-              <IconSwap show={currentTheme === 'light'}>
+              <IconSwap show={effectiveTheme === 'light'}>
                 <FaSun className="w-5 h-5" />
               </IconSwap>
-              <IconSwap show={currentTheme === 'dark'}>
+              <IconSwap show={effectiveTheme === 'dark'}>
                 <FaMoon className="w-5 h-5" />
               </IconSwap>
             </button>
@@ -181,6 +177,8 @@ export default function Navbar({ currentTheme, toggleTheme }) {
 
       <aside
         ref={panelRef}
+        aria-hidden={!open}
+        inert={open ? undefined : ''}
         className={clsx(
           'md:hidden fixed inset-0 z-40 flex flex-col items-center justify-center space-y-8 transform transition-all duration-500 origin-center',
           'bg-white dark:bg-gray-900',
@@ -196,7 +194,7 @@ export default function Navbar({ currentTheme, toggleTheme }) {
           <FaTimes className="w-7 h-7" />
         </button>
         <div className="flex flex-col items-center justify-center space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white mb-2">Menu</h2>
+          <p className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white mb-2">Menu</p>
 
           <nav className="flex flex-col gap-4">
             {navItems.map(({ id, label, icon: Icon }, idx) => (
@@ -232,7 +230,7 @@ export default function Navbar({ currentTheme, toggleTheme }) {
             className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary-accent dark:hover:text-primary-accent-dark transition"
             aria-label="Toggle theme"
           >
-            {currentTheme === 'light' ? <FaMoon className="w-6 h-6" /> : <FaSun className="w-6 h-6" />}
+            {effectiveTheme === 'light' ? <FaMoon className="w-6 h-6" /> : <FaSun className="w-6 h-6" />}
             <span className="text-sm">Switch Theme</span>
           </button>
         </div>

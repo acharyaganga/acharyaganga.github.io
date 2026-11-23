@@ -4,7 +4,14 @@ export default function useLocalStorage(key, initialValue) {
   const [storedValue, setStoredValue] = useState(() => {
     try {
       const saved = localStorage.getItem(key);
-      if (saved !== null) return JSON.parse(saved);
+      if (saved !== null) {
+        // Older builds stored the value JSON-encoded ('"dark"'); accept both.
+        try {
+          return JSON.parse(saved);
+        } catch (_) {
+          return saved;
+        }
+      }
     } catch (_) {}
     return key === 'theme'
       ? 'auto'
@@ -35,7 +42,10 @@ export default function useLocalStorage(key, initialValue) {
       const valueToStore = typeof value === 'function' ? value(storedValue) : value;
       setStoredValue(valueToStore);
       try {
-        localStorage.setItem(key, JSON.stringify(valueToStore));
+        localStorage.setItem(
+          key,
+          typeof valueToStore === 'string' ? valueToStore : JSON.stringify(valueToStore)
+        );
       } catch (_) {}
       if (key === 'theme') applyTheme(valueToStore);
     },

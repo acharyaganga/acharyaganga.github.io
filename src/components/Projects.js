@@ -99,7 +99,7 @@ export default function Projects() {
       <section id="projects" className="scroll-mt-24 pt-6 pb-16 lg:pt-10 lg:pb-20 bg-gradient-to-b from-slate-50 via-white to-slate-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6">
           <header className="text-center mb-12">
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white relative inline-block after:block after:h-1 after:bg-primary-accent after:w-12 after:mt-2 after:mx-auto">
+            <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white relative inline-block after:block after:h-1 after:bg-primary-accent dark:after:bg-primary-accent-dark after:w-12 after:mt-2 after:mx-auto">
               What I’ve Built
             </h2>
             <p className="mt-4 max-w-xl mx-auto text-base text-gray-600 dark:text-gray-400">
@@ -153,17 +153,13 @@ export default function Projects() {
                         <span>{project.title}</span>
                         {project.label && (
                           <span
-                            className="group relative"
-                            aria-label={
-                              project.label === 'team project'
-                                ? 'Team project developed with a group'
-                                : 'Private repository, not publicly accessible'
-                            }
+                            className="group relative flex-shrink-0"
+                            tabIndex={0}
                           >
-                            <span className="text-xs bg-red-100 dark:bg-red-200 text-red-700 dark:text-red-800 px-2 py-0.5 rounded-full cursor-default">
+                            <span className="text-xs bg-red-100 dark:bg-red-200 text-red-700 dark:text-red-800 px-2 py-0.5 rounded-full cursor-default whitespace-nowrap">
                               {project.label}
                             </span>
-                            <span className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-2 text-xs text-white bg-black bg-opacity-80 px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-50 w-48 text-center">
+                            <span className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-2 text-xs text-white bg-black bg-opacity-80 px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200 z-50 w-48 text-center">
                               {project.label === 'team project'
                                 ? 'Team project developed with a group'
                                 : 'Private repository, not publicly accessible'}
@@ -199,9 +195,8 @@ export default function Projects() {
                         <FiExternalLink className="w-4 h-4" />
                       </a>
                     ) : (
-                      <span className="inline-flex items-center gap-2 text-gray-400 cursor-not-allowed">
-                        Private Repo
-                        <FiExternalLink className="w-4 h-4" />
+                      <span className="inline-flex items-center gap-2 text-gray-500 dark:text-gray-400">
+                        Source not public
                       </span>
                     )}
                   </div>

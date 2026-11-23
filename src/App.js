@@ -43,11 +43,13 @@ export default function App() {
     <Router>
       <Navbar currentTheme={theme} toggleTheme={cycleTheme} />
       <ScrollToSection />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+      <main id="main">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+      </main>
       <Footer />
       <ScrollToTop />
     </Router>

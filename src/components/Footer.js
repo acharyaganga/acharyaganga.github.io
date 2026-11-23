@@ -11,7 +11,7 @@ const Footer = () => (
       </p>
       <p className="text-xs flex items-center gap-2">
         Crafted with
-        <FaHeart className="w-3.5 h-3.5 text-primary-accent inline-block" />
+        <FaHeart className="w-3.5 h-3.5 text-primary-accent dark:text-primary-accent-dark inline-block" />
         using React, Tailwind CSS &amp; JavaScript.
       </p>
     </div>

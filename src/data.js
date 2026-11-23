@@ -24,7 +24,6 @@ export const projectsData = [
         title: "Search Engine",
         description: "A Java search engine using PostgreSQL, integrating Potter Stemmer and stopword filtering. Implements advanced search algorithms, PageRank, and indexing techniques for document retrieval. Features inverted indices for quick, precise searches across vast datasets and link graph analysis for result prioritization.",
         tags: ["Java", "PostgreSQL", "Gradle", "Tomcat", "Search Algorithms", "PageRank"],
-        link: "https://github.com/acharyaganga/",
         label: "private repo"
     },
     {
@@ -32,7 +31,6 @@ export const projectsData = [
         title: "UML Editor",
         description: "A Python-based UML Editor using MVC architecture for efficient CLI and GUI diagram management. Features a custom parser and CI/CD pipeline, ensuring application reliability with robust exception handling and 100% pytest coverage. Includes an accessible, user-friendly GUI, refined through user feedback.",
         tags: ["Python", "Tkinter", "Pygame", "pytest", "MVC", "CI/CD"],
-        link: "https://github.com/acharyaganga/",
         label: "team project"
     }
 ];
