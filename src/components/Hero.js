@@ -94,29 +94,19 @@ export default function Hero() {
               <FiDownload className="h-4 w-4" aria-hidden="true" />
               Résumé
             </a>
-            <a
-              href="#contact"
-              className="hidden px-2 py-2 text-sm font-semibold text-gray-700 underline-offset-4 hover:text-primary-accent hover:underline dark:text-gray-300 dark:hover:text-primary-accent-dark sm:inline"
-            >
-              Get in touch
-            </a>
           </motion.div>
 
-          {/* Phones: the facts sit here as chips; larger screens show them as cards on the photo. */}
-          <motion.ul
+          {/* Phones: the facts are one quiet line; larger screens show them as cards on the photo. */}
+          <motion.p
             variants={item}
-            className="mt-6 flex flex-wrap justify-center gap-2 text-xs font-medium text-gray-700 dark:text-gray-200 md:hidden"
+            className="mt-6 text-sm text-gray-500 dark:text-gray-400 md:hidden"
           >
-            {facts.map(({ icon: Icon, value, label }) => (
-              <li
-                key={label}
-                className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1.5 ring-1 ring-gray-200 dark:bg-gray-800/80 dark:ring-gray-700"
-              >
-                <Icon className="h-3.5 w-3.5 text-primary-accent dark:text-primary-accent-dark" aria-hidden="true" />
+            {facts.map(({ value, label }) => (
+              <span key={label} className="block">
                 {value} {label}
-              </li>
+              </span>
             ))}
-          </motion.ul>
+          </motion.p>
         </motion.div>
 
         <motion.div
