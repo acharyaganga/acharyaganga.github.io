@@ -6,6 +6,13 @@ import ScrollReveal from '../hooks/ScrollReveal';
 import profilePic from '../assets/images/profile.webp';
 import resumePDF from '../assets/Ganga_Resume.pdf';
 
+// Counted from graduation (May 2024) so the stat never goes stale.
+const CAREER_START = new Date(2024, 4, 1);
+const yearsExperience = Math.max(
+  1,
+  Math.floor((Date.now() - CAREER_START.getTime()) / (365.25 * 24 * 60 * 60 * 1000))
+);
+
 export default function About() {
   return (
     <ScrollReveal as="section" variant="slide-up" className="group">
@@ -61,8 +68,10 @@ export default function About() {
                 <li className="flex items-center gap-4 bg-gray-100 dark:bg-gray-700/30 p-4 rounded-xl shadow-md">
                   <FaBriefcase className="text-primary-accent dark:text-primary-accent-dark w-6 h-6 flex-shrink-0" />
                   <div>
-                    <div className="text-xl font-bold">1</div>
-                    <div className="text-xs uppercase text-gray-600 dark:text-gray-400">Year Experience</div>
+                    <div className="text-xl font-bold">{yearsExperience}+</div>
+                    <div className="text-xs uppercase text-gray-600 dark:text-gray-400">
+                      {yearsExperience === 1 ? 'Year' : 'Years'} Experience
+                    </div>
                   </div>
                 </li>
                 <li className="flex items-center gap-4 bg-gray-100 dark:bg-gray-700/30 p-4 rounded-xl shadow-md">
