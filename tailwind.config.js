@@ -16,7 +16,7 @@ module.exports = {
         'primary-accent-dark-hover': '#2AA79B',
       },
       fontFamily: {
-        primary: ['Inter', 'sans-serif'],
+        primary: ['Poppins', 'sans-serif'],
         oswald: ['Oswald', 'sans-serif'],
       },
       spacing: {

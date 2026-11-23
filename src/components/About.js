@@ -3,7 +3,7 @@ import Tilt from 'react-parallax-tilt';
 import { FaDownload, FaBriefcase, FaCode } from 'react-icons/fa';
 import ScrollReveal from '../hooks/ScrollReveal';
 
-import profilePic from '../assets/images/profile.jpg';
+import profilePic from '../assets/images/profile.webp';
 import resumePDF from '../assets/Ganga_Resume.pdf';
 
 export default function About() {
@@ -12,13 +12,11 @@ export default function About() {
       <section
         id="about"
         className="relative scroll-mt-24 pt-6 pb-16 lg:pt-10 lg:pb-20 bg-gradient-to-b from-slate-50 via-white to-slate-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
-        data-aos="fade-up"
-        data-aos-delay="200"
       >
 
         <div className="container mx-auto px-4 sm:px-6">
           <header className="text-center mb-12">
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white relative inline-block after:block after:h-1 after:bg-primary-accent after:w-12 after:mt-2 after:mx-auto">
+            <h2 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white relative inline-block after:block after:h-1 after:bg-primary-accent dark:after:bg-primary-accent-dark after:w-12 after:mt-2 after:mx-auto">
               About Me
             </h2>
             <p className="mt-4 max-w-xl mx-auto text-base text-gray-600 dark:text-gray-400">
@@ -27,13 +25,15 @@ export default function About() {
           </header>
 
           <div className="mx-auto max-w-5xl grid md:grid-cols-2 lg:grid-cols-5 gap-12 items-center">
-            <div className="md:order-2 lg:col-span-2 md:col-span-1 hidden md:block" data-aos="zoom-in" data-aos-delay="100">
+            <div className="md:order-2 lg:col-span-2 md:col-span-1 hidden md:block">
               <Tilt glareEnable={false} tiltMaxAngleX={6} tiltMaxAngleY={6}>
                 <div className="relative group">
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary-accent/20 to-transparent blur-xl opacity-60 animate-pulseOnce" />
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-primary-accent/20 to-transparent blur-xl opacity-60" />
                   <img
                     src={profilePic}
                     alt="Portrait of Ganga Acharya smiling"
+                    width="288"
+                    height="288"
                     loading="lazy"
                     decoding="async"
                     className="relative z-10 w-72 h-72 rounded-3xl object-cover shadow-2xl transition-transform duration-300 group-hover:-translate-y-1"
@@ -59,17 +59,17 @@ export default function About() {
 
               <ul className="mt-10 grid grid-cols-2 gap-4">
                 <li className="flex items-center gap-4 bg-gray-100 dark:bg-gray-700/30 p-4 rounded-xl shadow-md">
-                  <FaBriefcase className="text-primary-accent w-6 h-6" />
+                  <FaBriefcase className="text-primary-accent dark:text-primary-accent-dark w-6 h-6 flex-shrink-0" />
                   <div>
                     <div className="text-xl font-bold">1</div>
-                    <div className="text-xs uppercase text-gray-500">Year Experience</div>
+                    <div className="text-xs uppercase text-gray-600 dark:text-gray-400">Year Experience</div>
                   </div>
                 </li>
                 <li className="flex items-center gap-4 bg-gray-100 dark:bg-gray-700/30 p-4 rounded-xl shadow-md">
-                  <FaCode className="text-primary-accent w-6 h-6" />
+                  <FaCode className="text-primary-accent dark:text-primary-accent-dark w-6 h-6 flex-shrink-0" />
                   <div>
                     <div className="text-xl font-bold">5+</div>
-                    <div className="text-xs uppercase text-gray-500">Projects Completed</div>
+                    <div className="text-xs uppercase text-gray-600 dark:text-gray-400">Projects Completed</div>
                   </div>
                 </li>
               </ul>
@@ -78,7 +78,7 @@ export default function About() {
                 “Building with empathy, scaling with clarity.”
               </blockquote>
 
-              <div className="mt-10 flex justify-center animate-fadeInUp" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+              <div className="mt-10 flex justify-center">
                 <a
                   href={resumePDF}
                   target="_blank"

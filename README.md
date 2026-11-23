@@ -4,14 +4,14 @@ Welcome to the source code for my personal portfolio website. This is a place wh
 
 ## 🌐 Live Site
 
-You can view the live site here: [https://gangacharya.com](https://gangacharya.com)
+You can view the live site here: [https://www.gangaacharya.com](https://www.gangaacharya.com)
 
 ## 🛠️ Technologies Used
 
 - React
 - Tailwind CSS
 - React Icons
-- EmailJS (for contact form)
+- Web3Forms (for contact form)
 
 ## 📁 How It's Organized
 

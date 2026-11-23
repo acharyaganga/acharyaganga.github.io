@@ -1,0 +1,5 @@
+# Section routes handled by the single-page app. Everything else falls through to 404.html.
+/about     /  200
+/skills    /  200
+/projects  /  200
+/contact   /  200
