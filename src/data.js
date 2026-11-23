@@ -1,5 +1,5 @@
-// Counted from graduation (May 2024) so the figure never goes stale.
-const CAREER_START = new Date(2024, 4, 1);
+// Counted from the start of the Data Analyst role (July 2024) so the figure never goes stale.
+const CAREER_START = new Date(2024, 6, 1);
 export const yearsExperience = Math.max(
   1,
   Math.floor((Date.now() - CAREER_START.getTime()) / (365.25 * 24 * 60 * 60 * 1000))
@@ -17,7 +17,7 @@ export const links = {
 
 export const experience = [
   {
-    period: 'Present',
+    period: 'Jul 2024 \u2013 Present',
     title: 'Data Analyst',
     org: 'Pennsylvania Department of Human Services',
     detail:
