@@ -160,7 +160,7 @@ export default function Navbar({ currentTheme, toggleTheme }) {
               href={resumeURL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn btn-primary !px-4 !py-2 text-sm"
+              className="py-1 text-sm font-medium text-gray-600 transition-colors hover:text-primary-accent dark:text-gray-300 dark:hover:text-primary-accent-dark"
             >
               Résumé
             </a>

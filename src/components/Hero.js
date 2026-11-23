@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FiArrowRight, FiAward, FiBriefcase, FiClock, FiDownload } from 'react-icons/fi';
+import { FiArrowRight, FiAward, FiBarChart2, FiDownload } from 'react-icons/fi';
 import useTypewriter from '../hooks/useTypewriter';
 import { roles, yearsExperience } from '../data';
 
@@ -17,11 +17,19 @@ const item = {
 };
 
 const facts = [
-  { icon: FiBriefcase, text: 'Data Analyst, Pennsylvania Department of Human Services' },
-  { icon: FiAward, text: 'B.S. Computer Science, Millersville University' },
   {
-    icon: FiClock,
-    text: `${yearsExperience}+ ${yearsExperience === 1 ? 'year' : 'years'} of experience`,
+    icon: FiBarChart2,
+    value: `${yearsExperience}+ ${yearsExperience === 1 ? 'year' : 'years'}`,
+    label: 'in data analysis',
+    position: '-right-5 bottom-10',
+    delay: 0,
+  },
+  {
+    icon: FiAward,
+    value: 'B.S.',
+    label: 'Computer Science',
+    position: '-left-8 top-8',
+    delay: 1.2,
   },
 ];
 
@@ -29,19 +37,29 @@ export default function Hero() {
   const text = useTypewriter(roles);
 
   return (
-    <section id="hero" aria-label="Introduction" className="pt-28 pb-16 md:pt-40 md:pb-24">
-      <div className="shell grid items-center gap-12 md:grid-cols-[1.3fr_1fr] md:gap-16">
-        <motion.div variants={container} initial="hidden" animate="show">
+    <section
+      id="hero"
+      aria-label="Introduction"
+      className="hero-bg relative overflow-hidden pt-24 pb-14 md:pt-40 md:pb-28"
+    >
+      <div className="shell relative grid items-center gap-8 md:grid-cols-[1.25fr_1fr] md:gap-16">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="flex flex-col items-center text-center md:items-start md:text-left"
+        >
           <motion.p
             variants={item}
-            className="text-sm font-semibold uppercase tracking-[0.2em] text-gray-500 dark:text-gray-400"
+            className="inline-flex items-center gap-2.5 rounded-full bg-white/80 px-3.5 py-1.5 text-xs font-medium text-gray-700 ring-1 ring-gray-200 dark:bg-gray-800/80 dark:text-gray-200 dark:ring-gray-700"
           >
-            Hello, I’m
+            <span className="pulse-dot" aria-hidden="true" />
+            Currently at PA Dept. of Human Services
           </motion.p>
 
           <motion.h1
             variants={item}
-            className="mt-3 pb-2 font-oswald text-5xl tracking-wide sm:text-6xl lg:text-7xl bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 dark:from-teal-400 dark:via-cyan-400 dark:to-blue-400 bg-clip-text text-transparent"
+            className="mt-5 pb-2 font-oswald text-5xl tracking-wide sm:text-6xl lg:text-7xl bg-gradient-to-r from-teal-600 via-cyan-600 to-blue-600 dark:from-teal-400 dark:via-cyan-400 dark:to-blue-400 bg-clip-text text-transparent"
           >
             Ganga&nbsp;Acharya
           </motion.h1>
@@ -49,7 +67,7 @@ export default function Hero() {
           <motion.div
             variants={item}
             aria-hidden="true"
-            className="mt-3 flex min-h-[1.6em] items-center text-xl font-semibold text-primary-accent dark:text-primary-accent-dark sm:text-2xl"
+            className="mt-2 flex min-h-[1.6em] items-center text-xl font-semibold text-primary-accent dark:text-primary-accent-dark sm:text-2xl"
           >
             <span className="whitespace-nowrap tracking-wide">{text}</span>
             <span className="typewriter-caret" />
@@ -58,13 +76,16 @@ export default function Hero() {
 
           <motion.p
             variants={item}
-            className="mt-6 max-w-xl text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-lg"
+            className="mt-5 max-w-xl text-base leading-relaxed text-gray-600 dark:text-gray-300 sm:text-lg"
           >
             I turn complex public-sector data into clear reports and dashboards that help teams
             make decisions, and I build the tools that automate the work.
           </motion.p>
 
-          <motion.div variants={item} className="mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
+          <motion.div
+            variants={item}
+            className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:justify-start"
+          >
             <a href="#projects" className="btn btn-primary">
               See my work
               <FiArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -73,47 +94,56 @@ export default function Hero() {
               <FiDownload className="h-4 w-4" aria-hidden="true" />
               Résumé
             </a>
-            <a
-              href="#contact"
-              className="px-2 py-2 text-sm font-semibold text-gray-700 underline-offset-4 hover:text-primary-accent hover:underline dark:text-gray-300 dark:hover:text-primary-accent-dark"
-            >
-              Get in touch
-            </a>
           </motion.div>
+
+          {/* Phones: the facts are one quiet line; larger screens show them as cards on the photo. */}
+          <motion.p
+            variants={item}
+            className="mt-6 text-sm text-gray-500 dark:text-gray-400 md:hidden"
+          >
+            {facts.map(({ value, label }) => (
+              <span key={label} className="block">
+                {value} {label}
+              </span>
+            ))}
+          </motion.p>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
-          className="mx-auto w-full max-w-xs md:max-w-sm"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className="relative order-first mx-auto w-32 sm:w-40 md:order-last md:w-full md:max-w-sm"
         >
-          <div className="relative mx-auto max-w-[15rem] sm:max-w-none">
-            <div
-              aria-hidden="true"
-              className="absolute -inset-5 rounded-[2.5rem] bg-gradient-to-tr from-teal-400/25 via-cyan-400/10 to-transparent blur-2xl"
-            />
-            <img
-              src={profilePic}
-              alt="Portrait of Ganga Acharya smiling"
-              width="640"
-              height="640"
-              fetchpriority="high"
-              className="relative aspect-square w-full rounded-[2rem] object-cover"
-            />
-          </div>
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 translate-x-2 translate-y-2 rounded-[1.75rem] bg-primary-accent/15 dark:bg-primary-accent-dark/15 md:translate-x-5 md:translate-y-5 md:rounded-[2.25rem]"
+          />
+          <img
+            src={profilePic}
+            alt="Portrait of Ganga Acharya smiling"
+            width="640"
+            height="640"
+            fetchpriority="high"
+            className="relative aspect-square w-full rounded-[1.75rem] object-cover md:aspect-[4/5] md:rounded-[2.25rem]"
+          />
 
-          <ul className="mt-6 space-y-2.5 text-sm text-gray-600 dark:text-gray-300">
-            {facts.map(({ icon: Icon, text: fact }) => (
-              <li key={fact} className="flex items-start gap-3">
-                <Icon
-                  className="mt-0.5 h-4 w-4 flex-shrink-0 text-primary-accent dark:text-primary-accent-dark"
-                  aria-hidden="true"
-                />
-                <span>{fact}</span>
-              </li>
-            ))}
-          </ul>
+          {facts.map(({ icon: Icon, value, label, position, delay }) => (
+            <motion.div
+              key={label}
+              animate={{ y: [0, -7, 0] }}
+              transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut', delay }}
+              className={`absolute ${position} hidden items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-lg shadow-teal-900/10 ring-1 ring-gray-900/5 dark:bg-gray-800 dark:shadow-black/30 dark:ring-white/10 md:flex`}
+            >
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-accent/10 text-primary-accent dark:bg-primary-accent-dark/15 dark:text-primary-accent-dark">
+                <Icon className="h-4 w-4" aria-hidden="true" />
+              </span>
+              <span className="leading-tight">
+                <span className="block text-sm font-semibold text-gray-900 dark:text-white">{value}</span>
+                <span className="block text-xs text-gray-500 dark:text-gray-400">{label}</span>
+              </span>
+            </motion.div>
+          ))}
         </motion.div>
       </div>
     </section>

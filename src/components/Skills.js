@@ -7,7 +7,7 @@ const icons = { data: FiBarChart2, web: FiMonitor, tools: FiTool };
 
 export default function Skills() {
   return (
-    <section id="skills" className="section">
+    <section id="skills" className="section section-band">
       <div className="shell">
         <Reveal>
           <h2 className="section-title">Skills</h2>
