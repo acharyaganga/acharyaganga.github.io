@@ -1,20 +1,15 @@
 import React from 'react';
-import { useTypewriter, Cursor } from 'react-simple-typewriter';
+import useTypewriter from '../hooks/useTypewriter';
 import { motion } from 'framer-motion';
 
 const roles = [
+  'Data Analyst',
   'Full‑Stack Developer',
-  'Software Engineer',
-  'Creative Coder',
   'Problem Solver',
 ];
 
 export default function Hero() {
-  const [text] = useTypewriter({
-    words: roles,
-    loop: 0,
-    delaySpeed: 2000,
-  });
+  const text = useTypewriter(roles);
 
   return (
     <section
@@ -27,10 +22,10 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center md:text-left font-extrabold leading-[1.15]"
+          className="text-center md:text-left font-bold leading-[1.15]"
         >
           <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl">I’m</span>
-          <span className="block pb-4 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 bg-clip-text text-transparent font-oswald tracking-wide text-5xl sm:text-6xl md:text-7xl lg:text-8xl drop-shadow-lg">
+          <span className="block pb-4 bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 bg-clip-text text-transparent font-oswald tracking-wide text-5xl sm:text-6xl md:text-7xl lg:text-8xl">
             Ganga&nbsp;Acharya
           </span>
         </motion.h1>
@@ -40,10 +35,10 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
           aria-hidden="true"
-          className="mt-4 text-xl sm:text-2xl md:text-3xl font-semibold text-primary-accent dark:text-primary-accent-dark text-center md:text-left"
+          className="mt-4 flex items-center justify-center md:justify-start min-h-[1.6em] text-xl sm:text-2xl md:text-3xl font-semibold text-primary-accent dark:text-primary-accent-dark"
         >
-          <span className="typewriter-text">{text}</span>
-          <Cursor cursorStyle="|" />
+          <span className="whitespace-nowrap tracking-wide">{text}</span>
+          <span className="typewriter-caret" />
         </motion.div>
 
         <p className="sr-only">{roles.join(', ')}</p>

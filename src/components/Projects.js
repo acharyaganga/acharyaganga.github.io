@@ -135,7 +135,7 @@ export default function Projects() {
               transition={{ type: 'tween', duration: 0.35 }}
               ref={gridRef}
               style={{ minHeight: isMobile ? undefined : baseHeight }}
-              className="relative will-change-transform grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8"
+              className="relative will-change-transform grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-5xl mx-auto"
             >
               {filtered.map((project, i) => (
                 <motion.article
@@ -145,7 +145,7 @@ export default function Projects() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  className="flex flex-col transition-transform transform hover:scale-[1.03] h-auto md:h-[420px] bg-white/80 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 backdrop-blur-xl border border-primary-accent/10 dark:border-primary-accent-dark/30 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl"
+                  className="flex flex-col transition-transform transform hover:scale-[1.02] bg-white/80 dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 backdrop-blur-xl border border-primary-accent/10 dark:border-primary-accent-dark/30 rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl"
                 >
                   <div className="p-8 flex-grow">
                     <h3 className="text-xl font-bold mb-1 text-gray-800 dark:text-gray-100 hover:text-primary-accent dark:hover:text-primary-accent-dark transition-colors">
@@ -168,7 +168,7 @@ export default function Projects() {
                         )}
                       </div>
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6 line-clamp-4">
+                    <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-6">
                       {project.description}
                     </p>
                     <div className="flex flex-wrap gap-2">

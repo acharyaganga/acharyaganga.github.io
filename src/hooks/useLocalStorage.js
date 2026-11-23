@@ -32,7 +32,11 @@ export default function useLocalStorage(key, initialValue) {
 
   const applyTheme = useCallback(
     (raw) => {
-      document.documentElement.classList.toggle('dark', resolveTheme(raw) === 'dark');
+      const dark = resolveTheme(raw) === 'dark';
+      document.documentElement.classList.toggle('dark', dark);
+      document
+        .querySelector('meta[name="theme-color"]')
+        ?.setAttribute('content', dark ? '#0f172a' : '#f8fafc');
     },
     [resolveTheme]
   );

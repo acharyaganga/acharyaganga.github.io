@@ -69,16 +69,18 @@ body {
   opacity: 0.05;
 }
 
-.typewriter-text-container {
+.typewriter-caret {
   display: inline-block;
-  min-height: 1.2em;
-  vertical-align: bottom;
+  width: 2px;
+  height: 1.15em;
+  margin-left: 0.2em;
+  border-radius: 1px;
+  background-color: currentColor;
+  animation: caret-blink 1.1s steps(1, end) infinite;
 }
-.typewriter-text {
-  display: inline;
-  white-space: nowrap;
-  overflow: hidden;
-  letter-spacing: .05em;
+@keyframes caret-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
 }
 
 @keyframes fadeIn {
@@ -117,8 +119,12 @@ body {
 }
 
 :focus-visible {
-  outline: 2px dashed #31C2B3;
-  outline-offset: 4px;
+  outline: 2px solid #024950;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.dark :focus-visible {
+  outline-color: #31C2B3;
 }
 
 h1, h2, h3 {

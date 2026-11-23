@@ -54,6 +54,7 @@ export default function Navbar({ currentTheme, toggleTheme }) {
   const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(true);
   const [scrolled, setScrolled] = useState(false);
+  const [activeId, setActiveId] = useState(null);
   const lastY = useRef(0);
   const panelRef = useRef(null);
   const btnRef = useRef(null);
@@ -65,6 +66,7 @@ export default function Navbar({ currentTheme, toggleTheme }) {
         ? 'dark'
         : 'light'
       : currentTheme;
+  const themeLabel = `Switch to ${effectiveTheme === 'dark' ? 'light' : 'dark'} theme`;
 
   useEffect(() => {
     const onScroll = () => {
@@ -75,6 +77,24 @@ export default function Navbar({ currentTheme, toggleTheme }) {
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Highlight the nav link of the section crossing the middle of the viewport.
+  useEffect(() => {
+    const sections = ['hero', ...navItems.map((n) => n.id)]
+      .map((id) => document.getElementById(id))
+      .filter(Boolean);
+    if (!sections.length || !('IntersectionObserver' in window)) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const hit = entries.find((e) => e.isIntersecting);
+        if (hit) setActiveId(hit.target.id);
+      },
+      { rootMargin: '-45% 0px -55% 0px' }
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   useClickOutside(panelRef, () => open && setOpen(false), btnRef);
@@ -102,10 +122,11 @@ export default function Navbar({ currentTheme, toggleTheme }) {
       <header
         id="navbar"
         className={clsx(
-          'fixed inset-x-0 top-0 z-40 shadow-sm transition-transform duration-300 dark:border-b dark:border-gray-700',
-          'bg-white dark:bg-gray-900',
-          visible ? 'translate-y-0' : '-translate-y-full',
-          scrolled && 'backdrop-blur-md'
+          'fixed inset-x-0 top-0 z-40 border-b transition-[transform,background-color,border-color,box-shadow] duration-300',
+          scrolled
+            ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm border-gray-200/70 dark:border-gray-700/70'
+            : 'bg-transparent border-transparent',
+          visible ? 'translate-y-0' : '-translate-y-full'
         )}
       >
         <div className="container mx-auto flex items-center justify-between px-4 sm:px-6 py-3">
@@ -123,7 +144,14 @@ export default function Navbar({ currentTheme, toggleTheme }) {
               <Link
                 key={id}
                 to={`/${id}`}
-                className="scroll-smooth transition-colors hover:text-primary-accent dark:hover:text-primary-accent-dark text-gray-600 dark:text-gray-300"
+                aria-current={activeId === id ? 'location' : undefined}
+                className={clsx(
+                  'relative py-1 text-sm font-medium transition-colors hover:text-primary-accent dark:hover:text-primary-accent-dark',
+                  'after:absolute after:left-0 after:-bottom-0.5 after:h-0.5 after:w-full after:origin-left after:rounded-full after:bg-current after:transition-transform after:duration-300',
+                  activeId === id
+                    ? 'text-primary-accent dark:text-primary-accent-dark after:scale-x-100'
+                    : 'text-gray-600 dark:text-gray-300 after:scale-x-0'
+                )}
               >
                 {label}
               </Link>
@@ -138,14 +166,15 @@ export default function Navbar({ currentTheme, toggleTheme }) {
             </a>
             <button
               onClick={toggleTheme}
-              aria-label="Toggle theme"
+              aria-label={themeLabel}
+              title={themeLabel}
               className="relative w-10 h-10 flex items-center justify-center rounded-full text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
             >
               <IconSwap show={effectiveTheme === 'light'}>
-                <FaSun className="w-5 h-5" />
+                <FaMoon className="w-5 h-5" />
               </IconSwap>
               <IconSwap show={effectiveTheme === 'dark'}>
-                <FaMoon className="w-5 h-5" />
+                <FaSun className="w-5 h-5" />
               </IconSwap>
             </button>
           </nav>
@@ -228,7 +257,7 @@ export default function Navbar({ currentTheme, toggleTheme }) {
           <button
             onClick={toggleTheme}
             className="flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-primary-accent dark:hover:text-primary-accent-dark transition"
-            aria-label="Toggle theme"
+            aria-label={themeLabel}
           >
             {effectiveTheme === 'light' ? <FaMoon className="w-6 h-6" /> : <FaSun className="w-6 h-6" />}
             <span className="text-sm">Switch Theme</span>

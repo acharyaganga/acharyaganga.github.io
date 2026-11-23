@@ -52,7 +52,7 @@ export default function Skills() {
                           key={skill}
                           className="flex items-center text-gray-700 dark:text-gray-300"
                         >
-                          <span className="mr-3 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary-accent/15 text-primary-accent dark:bg-primary-accent-dark/20 dark:text-primary-accent-dark animate-pulse">
+                          <span className="mr-3 inline-flex h-5 w-5 items-center justify-center rounded-full bg-primary-accent/15 text-primary-accent dark:bg-primary-accent-dark/20 dark:text-primary-accent-dark">
                             <FiCheck className="w-3 h-3" />
                           </span>
                           {skill}
