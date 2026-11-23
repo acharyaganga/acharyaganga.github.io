@@ -4,7 +4,7 @@ import { experience } from '../data';
 
 export default function About() {
   return (
-    <section id="about" className="section">
+    <section id="about" className="section section-band">
       <div className="shell grid gap-12 md:grid-cols-2 md:gap-16">
         <Reveal>
           <h2 className="section-title">About</h2>
@@ -37,7 +37,11 @@ export default function About() {
               <Reveal as="li" key={entry.title} delay={i * 0.08} className="relative pb-8 pl-6 last:pb-0">
                 <span
                   aria-hidden="true"
-                  className="absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-primary-accent dark:bg-primary-accent-dark"
+                  className={
+                    entry.current
+                      ? 'pulse-dot !absolute -left-[5px] top-1.5 !h-2.5 !w-2.5'
+                      : 'absolute -left-[5px] top-1.5 h-2.5 w-2.5 rounded-full bg-gray-300 dark:bg-gray-600'
+                  }
                 />
                 <p className="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">
                   {entry.period}

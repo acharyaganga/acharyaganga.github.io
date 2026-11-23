@@ -18,6 +18,7 @@ export const links = {
 export const experience = [
   {
     period: 'Jul 2024 \u2013 Present',
+    current: true,
     title: 'Data Analyst',
     org: 'Pennsylvania Department of Human Services, OMHSAS \u00b7 contractor via Computer Aid, Inc. (CAI)',
     points: [

@@ -67,6 +67,65 @@ h1, h2, h3 {
   }
 }
 
+/* Live indicator: a dot with a ring that expands and fades. */
+.pulse-dot {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #0f9488;
+}
+.dark .pulse-dot {
+  background-color: #31c2b3;
+}
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-color: inherit;
+  animation: pulse-ring 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.7; }
+  80%, 100% { transform: scale(3); opacity: 0; }
+}
+
+/* Hero backdrop: two soft colour washes plus a dot grid that fades out toward the edges. */
+.hero-bg {
+  background-image:
+    radial-gradient(56rem 30rem at 88% -8%, rgba(49, 194, 179, 0.18), transparent 60%),
+    radial-gradient(40rem 26rem at -8% 30%, rgba(59, 130, 246, 0.08), transparent 60%);
+}
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, rgba(2, 73, 80, 0.16) 1px, transparent 0);
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 70% 35%, #000 15%, transparent 75%);
+  mask-image: radial-gradient(ellipse 75% 70% at 70% 35%, #000 15%, transparent 75%);
+}
+.dark .hero-bg {
+  background-image:
+    radial-gradient(56rem 30rem at 88% -8%, rgba(49, 194, 179, 0.12), transparent 60%),
+    radial-gradient(40rem 26rem at -8% 30%, rgba(59, 130, 246, 0.08), transparent 60%);
+}
+.dark .hero-bg::before {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.09) 1px, transparent 0);
+}
+
+/* Alternate sections sit on a lighter band so the page has rhythm without borders. */
+.section-band {
+  background-color: #ffffff;
+}
+.dark .section-band {
+  background-color: rgba(31, 41, 55, 0.35);
+}
+
 .typewriter-caret {
   display: inline-block;
   width: 2px;
