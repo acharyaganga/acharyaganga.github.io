@@ -8,7 +8,7 @@ You can view the live site here: [https://www.gangaacharya.com](https://www.gang
 
 ## 🛠️ Technologies Used
 
-- React
+- React, built with Vite
 - Tailwind CSS
 - React Icons
 - Web3Forms (for contact form)
@@ -20,8 +20,8 @@ The project is organized in a way that keeps things tidy and easy to manage:
 - **assets/** – for images, PDFs, and other files
 - **components/** – where all the sections of the website live (like Navbar, About, Projects, etc.)
 - **hooks/** – for small pieces of logic that are reused
-- **App.js** – the main layout of the site
-- **index.js** – the first file the browser looks at to start the app
+- **App.jsx** – the main layout of the site
+- **index.jsx** – the first file the browser looks at to start the app
 
 ## ✨ Features
 
