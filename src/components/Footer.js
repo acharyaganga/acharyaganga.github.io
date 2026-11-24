@@ -1,5 +1,6 @@
 import React from 'react';
-import { SiBluesky, SiGithub, SiLinkedin } from 'react-icons/si';
+import { SiBluesky, SiGithub } from 'react-icons/si';
+import { FaLinkedin } from 'react-icons/fa';
 import { FiMail } from 'react-icons/fi';
 import { links } from '../data';
 
@@ -7,7 +8,7 @@ const currentYear = new Date().getFullYear();
 
 const social = [
   { href: links.github, label: 'GitHub', icon: SiGithub, external: true },
-  { href: links.linkedin, label: 'LinkedIn', icon: SiLinkedin, external: true },
+  { href: links.linkedin, label: 'LinkedIn', icon: FaLinkedin, external: true },
   { href: links.bluesky, label: 'Bluesky', icon: SiBluesky, external: true },
   { href: links.email, label: 'Email', icon: FiMail },
 ];
