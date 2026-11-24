@@ -29,23 +29,15 @@ export const experience = [
     ],
   },
   {
-    period: '2015 \u2013 2021',
-    title: 'Production Supervisor',
-    org: 'BioFire Diagnostics',
-    detail: 'Led a production team; quality investigations and process improvement.',
-  },
-];
-
-export const education = [
-  {
     period: '2022 \u2013 2024',
     title: 'B.S. Computer Science',
     org: 'Millersville University',
   },
   {
-    period: '2020',
-    title: 'Associate\u2019s, General Education',
-    org: 'Salt Lake Community College',
+    period: '2015 \u2013 2021',
+    title: 'Production Supervisor',
+    org: 'BioFire Diagnostics',
+    detail: 'Led a production team; quality investigations and process improvement.',
   },
 ];
 
