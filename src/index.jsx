@@ -7,7 +7,6 @@ import '@fontsource/poppins/latin-700.css';
 import '@fontsource/oswald/latin-700.css';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,5 +14,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-reportWebVitals();
